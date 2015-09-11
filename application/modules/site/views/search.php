@@ -4,7 +4,6 @@
 
     <?php 
 	$atributos = array('id'=>'form','oninput'=>'ajaxTest();');
-	$att = array('id'=>'search');
 	echo form_open('site/search', $atributos);
 	echo form_input('search');
 	echo form_close();
