@@ -1,12 +1,12 @@
-<?php
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class View {
 	
-	public function show_view($templte_name)
+	public function show_view($template_name, $vars=null)
 	{
-		$this->view('templates/header', $vars);
-		$this->view($template_name, $vars);
-		$this->view('templates/footer', $vars);
+                $CI =& get_instance();
+		$CI->load->view('templates/header', $vars);
+		$CI->load->view($template_name, $vars);
+		$CI->load->view('templates/footer', $vars);
 	}
 }
