@@ -6,6 +6,7 @@ class Admin extends MX_Controller {
 	{
 		parent::__construct();
                 $this->load->model('news_model');
+                $this->load->library('view');
 	}
 	
 	function index(){
@@ -13,7 +14,7 @@ class Admin extends MX_Controller {
 			$this->session->unset_userdata('is_logged_in');
 			redirect(base_url());
 		}else{
-			$this->load->template('login_form');
+			$this->view->show_view('login_form');
 		}
 	}
         
@@ -32,9 +33,9 @@ class Admin extends MX_Controller {
                 $data["results"] = $this->news_model->
                 fetch_news($config["per_page"], $page);
                 $data["links"] = $this->pagination->create_links();
-                $this->load->template('admin_view',$data);     
+                $this->view->show_view('admin_view',$data);     
             }else{
-                $this->load->template('login_form');
+                $this->view->show_view('login_form');
             }
         }
         
@@ -52,7 +53,7 @@ class Admin extends MX_Controller {
 				redirect(base_url()."admin/ver");
 			}
 		}else{
-			$this->load->template('login_form');
+			$this->view->show_view('login_form');
 		}
 	}
 	
@@ -80,7 +81,7 @@ class Admin extends MX_Controller {
 			$this->news_model->delete_news($this->uri->segment(3));
 			redirect(base_url()."admin/ver");
 		}else{
-			$this->load->template('login_form');
+			$this->view->show_view('login_form');
 		}
 	}
 	

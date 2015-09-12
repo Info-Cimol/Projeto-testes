@@ -21,6 +21,7 @@ class Site extends MX_Controller {
 	 function __construct(){
 		parent::__construct();
 		$this->load->model('news_model');
+                $this->load->library('view');
 	 }
 	public function index()
 	{
@@ -37,10 +38,9 @@ class Site extends MX_Controller {
 		$data["results"] = $this->news_model->
             fetch_news($config["per_page"], $page);
 		$data["links"] = $this->pagination->create_links();
-		$this->load->template('index', $data);
+		$this->view->show_view('index', $data);
 	}
 	public function sobre(){
-		$this->load->library('view');
 		$this->view->show_view('sobre');
 	}
 	public function ver($id, $slug=NULL){
@@ -66,7 +66,7 @@ class Site extends MX_Controller {
 			}		
 	}
 	public function search(){
-		$this->load->template('search');
+		$this->view->show_view('search');
 	}
 	public function getSearch(){
 		$search=$this->input->post('search');
