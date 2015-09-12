@@ -40,7 +40,8 @@ class Site extends MX_Controller {
 		$this->load->template('index', $data);
 	}
 	public function sobre(){
-		$this->load->template('sobre');
+		$this->load->library('view');
+		$this->view->show_view('sobre');
 	}
 	public function ver($id, $slug=NULL){
 		if($slug == NULL){

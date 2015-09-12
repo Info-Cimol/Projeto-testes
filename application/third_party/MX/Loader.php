@@ -257,7 +257,7 @@ class MX_Loader extends CI_Loader
 	{
 		foreach ($modules as $_module) $this->module($_module);
 		return $this;
-	}
+	}$vars
 
 	/** Load a module plugin **/
 	public function plugin($plugin)
